@@ -4,7 +4,7 @@ import pytest
 
 from api.app import app as _app
 from api.models import db, User
-from api.auth.hash import hash_password
+from api.auth.argon2_hash import hash_password
 
 
 @pytest.fixture
@@ -82,7 +82,7 @@ def test_login_rehashes_when_needed(client, monkeypatch):
     assert user_after is not None
     assert user_after.password_hash != weak_hash
     # And new hash still verifies
-    from api.auth.hash import verify_password
+    from api.auth.argon2_hash import verify_password
 
     assert verify_password(user_after.password_hash, "rehashme")
 
