@@ -1,3 +1,10 @@
+# Local env files
+api/.env
+.env
+
+# Bytecode
+__pycache__/
+*.pyc
 node_modules
 .vscode
 __pycache__
