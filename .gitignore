@@ -11,3 +11,5 @@ __pycache__
 
 # Local Supabase instructions (do not commit)
 supabase/LOCAL_SUPABASE_INSTRUCTIONS.md
+# Supabase CLI temporary files
+supabase/.temp/
