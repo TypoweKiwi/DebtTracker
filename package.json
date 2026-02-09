@@ -9,6 +9,9 @@
         "start:dev": "concurrently --kill-others \"npm run start:api\" \"npm run start:web\"",
         "start:web": "cd web && npm start",
         "start:api": "cd api && conda run -n lofi-backend python app.py",
+        "start:api:sqlite": "powershell -ExecutionPolicy Bypass -File scripts/dev.ps1 -Db sqlite",
+        "start:api:mock": "powershell -ExecutionPolicy Bypass -File scripts/dev.ps1 -Db sqlite -MockData",
+        "start:api:supabase": "powershell -ExecutionPolicy Bypass -File scripts/dev.ps1 -Db supabase",
         "build:docker": "docker-compose -f docker/docker-compose.yml build",
         "start:docker": " docker-compose -f docker/docker-compose.yml up -d",
         "stop:docker": "docker-compose -f docker/docker-compose.yml down"

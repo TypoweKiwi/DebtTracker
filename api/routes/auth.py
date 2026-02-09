@@ -8,8 +8,8 @@ from __future__ import annotations
 from flask import Blueprint, current_app, jsonify, request
 from sqlalchemy.exc import IntegrityError
 
-from api.models import db, User
-from api.auth.argon2_hash import hash_password, needs_rehash, verify_password
+from models import db, User
+from auth.argon2_hash import hash_password, needs_rehash, verify_password
 
 
 auth_bp = Blueprint("auth", __name__, url_prefix="/auth")

@@ -1,26 +1,5 @@
-import os
-
-import pytest
-
-from api.app import app as _app
 from api.models import db, User
 from api.auth.argon2_hash import hash_password
-
-
-@pytest.fixture
-def app():
-    _app.config["TESTING"] = True
-    _app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"
-    with _app.app_context():
-        db.create_all()
-        yield _app
-        db.session.remove()
-        db.drop_all()
-
-
-@pytest.fixture
-def client(app):
-    return app.test_client()
 
 
 def test_register_stores_hash_not_plain(client):

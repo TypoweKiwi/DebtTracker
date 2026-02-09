@@ -1,6 +1,7 @@
 # Local env files
 api/.env
 .env
+api/dev.db
 
 # Bytecode
 __pycache__/

@@ -1,25 +1,28 @@
-import React, {useEffect, useState} from 'react';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Redirect, Link } from "react-router-dom";
 
-import { SocketContext, socket } from './context/socket';
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
 
-import './App.css';
-function Client() {
-  const [value, setValue] = useState(0);
-
-  useEffect(() => { socket.on("message", (data: number) => { setValue(data) }) }, []);
-
-  return (<p> Number of connections : {value}</p>)
-
-}
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <SocketContext.Provider value={socket}>
-        <Client/>
-      </SocketContext.Provider>
-
-    </div>
+    <Router>
+      <div className="App">
+        <nav>
+          <Link to="/login">Login</Link> | <Link to="/register">Register</Link> |{" "}
+          <Link to="/dashboard">Dashboard</Link>
+        </nav>
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Redirect to="/dashboard" />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
